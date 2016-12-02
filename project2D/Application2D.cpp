@@ -26,6 +26,8 @@ bool Application2D::startup() {
 	m_cameraY = 0;
 	m_timer = 0;
 
+	pos = Vector2D(600, 400);
+
 	return true;
 }
 
@@ -38,6 +40,10 @@ void Application2D::shutdown() {
 	delete m_2dRenderer;
 }
 
+class ShipControl
+{
+
+};
 void Application2D::update(float deltaTime) {
 
 	m_timer += deltaTime;
@@ -47,16 +53,16 @@ void Application2D::update(float deltaTime) {
 
 	// use arrow keys to move camera
 	if (input->isKeyDown(aie::INPUT_KEY_UP))
-		m_cameraY += 500.0f * deltaTime;
+		pos.y += 500.0f * deltaTime;
 
 	if (input->isKeyDown(aie::INPUT_KEY_DOWN))
-		m_cameraY -= 500.0f * deltaTime;
+		pos.y -= 500.0f * deltaTime;
 
 	if (input->isKeyDown(aie::INPUT_KEY_LEFT))
-		m_cameraX -= 500.0f * deltaTime;
+		pos.x -= 500.0f * deltaTime;
 
 	if (input->isKeyDown(aie::INPUT_KEY_RIGHT))
-		m_cameraX += 500.0f * deltaTime;
+		pos.x += 500.0f * deltaTime;
 
 	// example of audio
 	if (input->wasKeyPressed(aie::INPUT_KEY_SPACE))
@@ -65,6 +71,8 @@ void Application2D::update(float deltaTime) {
 	// exit the application
 	if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))
 		quit();
+
+
 }
 
 void Application2D::draw() {
@@ -84,7 +92,7 @@ void Application2D::draw() {
 
 	// demonstrate spinning sprite
 	m_2dRenderer->setUVRect(0,0,1,1);
-	m_2dRenderer->drawSprite(m_shipTexture, 600, 400, 0, 0, m_timer, 1);
+	m_2dRenderer->drawSprite(m_shipTexture, pos.x, pos.y, 0, 0, m_timer, 1);
 
 	// draw a thin line
 	m_2dRenderer->drawLine(300, 300, 600, 400, 2, 1);
