@@ -86,7 +86,57 @@ protected:
 	float m_timer;
 };
 
-
+class Vector2D
+{
+	float x, y;
+public:
+	Vector2D Addition(const Vector2D &a)const
+	{
+		Vector2D tmp = Vector2D(x + a.x, y + a.y);
+		return tmp;
+	};
+	Vector2D Subtraction(const Vector2D &b)const
+	{
+		Vector2D tmp = Vector2D(x - b.x, y - b.y);
+		return tmp;
+	};
+	Vector2D Multiply(const Vector2D & mult)const
+	{
+		Vector2D tmp = Vector2D(x * mult.x, y * mult.y);
+		return tmp;
+	};
+	Vector2D(float x2, float y2)
+	{
+		x = x2;
+		y = y2;
+	}
+	bool operator == (const Vector2D & other)const
+	{
+		if (x == other.x, y == other.y)
+		{
+			return true;
+		}
+		return false;
+	}
+	//precondition:  must have another vector to add to
+	//postcondition: a new vector is made/returned that is the sum of this vector and
+	//the other vector
+	Vector2D operator + (const Vector2D & other)const
+	{
+		Vector2D tmp = Vector2D(this->x + other.x, this->y + other.y);
+		return tmp;
+	}
+	Vector2D operator - (Vector2D & other)
+	{
+		Vector2D tmp = Vector2D(this->x - other.x, this->y - other.y);
+		return tmp;
+	}
+	Vector2D operator * (Vector2D & other)
+	{
+		Vector2D tmp = Vector2D(this->x * other.x, this->y * other.y);
+		return tmp;
+	}
+};
 class Vector3D
 {
 	float x, y, z;
@@ -115,18 +165,18 @@ public:
 	}
 	Vector3D operator == (Vector3D & other)
 	{
-		Vector3D * tmp = new Vector3D(this->x == other.x, this->y == other.y, this->z == other.z);
-		return *tmp;
+		Vector3D  tmp = Vector3D(this->x == other.x, this->y == other.y, this->z == other.z);
+		return tmp;
 	};
 	Vector3D operator + (Vector3D & other)
 	{
-		Vector3D * tmp = new Vector3D(this->x * other.x, this->y * other.y, this->z * other.z);
-		return *tmp;
+		Vector3D tmp = Vector3D(this->x * other.x, this->y * other.y, this->z * other.z);
+		return tmp;
 	};
 	Vector3D operator - (Vector3D & other)
 	{
-		Vector3D * tmp = new Vector3D(this->x - other.x, this->y - other.y, this->z * other.z);
-		return *tmp;
+		Vector3D tmp = Vector3D(this->x - other.x, this->y - other.y, this->z * other.z);
+		return tmp;
 	}
 };
 class Vector4D
@@ -158,17 +208,17 @@ public:
 	}
 	Vector4D operator == (Vector4D & other)
 	{
-		Vector4D *tmp = new Vector4D(this->x == other.x, this->y == other.y, this->z == other.z, this->w == other.w);
-		return *tmp;
+		Vector4D tmp = Vector4D(this->x == other.x, this->y == other.y, this->z == other.z, this->w == other.w);
+		return tmp;
 	};
 	Vector4D operator + (Vector4D & other)
 	{
-		Vector4D *tmp = new Vector4D(this->x + other.x, this->y + other.y, this->z + other.z, this->w + other.w);
-		return *tmp;
+		Vector4D tmp = Vector4D(this->x + other.x, this->y + other.y, this->z + other.z, this->w + other.w);
+		return tmp;
 	};
 	Vector4D operator - (Vector4D & other)
 	{
-		Vector4D *tmp = new Vector4D(this->x - other.x, this->y - other.y, this->z - other.z, this->w + other.w);
-		return *tmp;
+		Vector4D tmp = Vector4D(this->x - other.x, this->y - other.y, this->z - other.z, this->w + other.w);
+		return tmp;
 	};
 };
